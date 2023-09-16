@@ -1,0 +1,18 @@
+﻿@page
+@model IndexModel
+@{
+    ViewData["Title"] = "Home page";
+}
+
+<form method="post" enctype="multipart/form-data">
+    <input type="file" asp-for="UploadedFile" />
+    <button type="submit">Upload Button</button>
+</form>
+
+<div>
+    @Model.NavtexMessage
+</div>
+
+<script src="~/site.js"></script>
+
+
