@@ -21,7 +21,10 @@ namespace NavtexApp.Pages
             _coordinateParserService = coordinateParserService;
         }
 
-
+        /// <summary>
+        /// Gets the exact text from the Navtex message and highlights the coordinates
+        /// </summary>
+        /// <returns></returns>
         public async Task OnPostAsync()
         {
             if (UploadedFile != null && UploadedFile.Length > 0)

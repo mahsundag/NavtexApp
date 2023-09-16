@@ -1,8 +1,10 @@
-﻿namespace NavtexApp.Services
+﻿using NavtexApp.Models;
+
+namespace NavtexApp.Services
 {
     public interface ICoordinateParserService
     {
-        string Parse(string text);
+        List<SearchItem> Parse(string text);
         string GetExactText(string text);
 
         string Highlight(string text);
