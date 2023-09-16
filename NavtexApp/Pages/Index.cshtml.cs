@@ -1,10 +1,13 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using NavtexApp.Services;
 
 namespace NavtexApp.Pages
 {
     public class IndexModel : PageModel
     {
+        private readonly ICoordinateParserService _coordinateParserService;
+
         [BindProperty]
         public IFormFile UploadedFile { get; set; }
 
@@ -12,9 +15,10 @@ namespace NavtexApp.Pages
 
         private readonly ILogger<IndexModel> _logger;
 
-        public IndexModel(ILogger<IndexModel> logger)
+        public IndexModel(ILogger<IndexModel> logger, ICoordinateParserService coordinateParserService)
         {
             _logger = logger;
+            _coordinateParserService = coordinateParserService;
         }
 
 
@@ -24,7 +28,7 @@ namespace NavtexApp.Pages
             {
                 using var reader = new StreamReader(UploadedFile.OpenReadStream());
                 NavtexMessage = await reader.ReadToEndAsync();
-
+                NavtexMessage = _coordinateParserService.Highlight(NavtexMessage);
                 
             }
         }
