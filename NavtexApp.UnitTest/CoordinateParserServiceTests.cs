@@ -15,7 +15,9 @@ namespace NavtexApp.UnitTest
         {
             _service = new CoordinateParserService();
         }
-
+        /// <summary>
+        /// Test if it finds the exact text between ZCZC and NNNN
+        /// </summary>
         [Fact]
         public void GetExactText_ExtractsCorrectly()
         {
@@ -29,5 +31,7 @@ namespace NavtexApp.UnitTest
             // Assert
             Assert.Equal(expectedText, result);
         }
+
+       
     }
 }
